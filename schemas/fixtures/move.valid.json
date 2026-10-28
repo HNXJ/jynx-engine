@@ -1,0 +1,29 @@
+{
+  "move_id": "move-growth-001",
+  "move_type": "growth_n_to_n_plus_1",
+  "protocol_version": "0.1.0",
+  "round_id": "round-neuro-001",
+  "tournament_id": "neuro-omission-growth",
+  "actor": {
+    "actor_id": "actor:builder-01",
+    "roles": ["proposer"]
+  },
+  "payload_digest": {
+    "algorithm": "sha256",
+    "hex": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "evidence_refs": [
+    "ev:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  ],
+  "acceptance_criteria": {
+    "logical_id": "jynx.rules.growth-gate",
+    "version_range": "^0.1.0"
+  },
+  "target_judges": [
+    {
+      "logical_id": "jynx.judge.neuro-growth-rubric",
+      "version_range": "^0.1.0"
+    }
+  ],
+  "submitted_at": "2026-10-28T11:55:00Z"
+}

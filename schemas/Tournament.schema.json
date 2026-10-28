@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jynx.dev/schemas/Tournament.schema.json",
+  "title": "Tournament",
+  "description": "Portable tournament definition; references contracts by logical id only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tournament_id",
+    "name",
+    "protocol_version",
+    "rules_contract",
+    "objectives",
+    "judges",
+    "science_targets",
+    "allowed_move_types",
+    "plugin_registry",
+    "held_out_evidence"
+  ],
+  "properties": {
+    "tournament_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "protocol_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "rules_contract": { "$ref": "https://jynx.dev/schemas/common/LogicalRef.schema.json" },
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["objective_id", "description"],
+        "properties": {
+          "objective_id": { "type": "string", "minLength": 1 },
+          "description": { "type": "string" },
+          "science_target": { "$ref": "https://jynx.dev/schemas/common/LogicalRef.schema.json" },
+          "primary": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "judges": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["judge", "rubrics"],
+        "properties": {
+          "judge": { "$ref": "https://jynx.dev/schemas/common/LogicalRef.schema.json" },
+          "rubrics": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "https://jynx.dev/schemas/common/LogicalRef.schema.json" }
+          },
+          "move_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "growth_n_to_n_plus_1",
+                "prediction",
+                "falsification",
+                "replication",
+                "compression",
+                "experimental_design",
+                "uncertainty_reduction"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "science_targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "https://jynx.dev/schemas/common/LogicalRef.schema.json" }
+    },
+    "allowed_move_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "growth_n_to_n_plus_1",
+          "prediction",
+          "falsification",
+          "replication",
+          "compression",
+          "experimental_design",
+          "uncertainty_reduction"
+        ]
+      }
+    },
+    "plugin_registry": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["logical_id", "kind", "version_range"],
+        "properties": {
+          "logical_id": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": ["arena", "rules", "science", "lab", "engine", "judge", "world", "helper"]
+          },
+          "version_range": { "type": "string" },
+          "provides": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "depends_on": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "helper_dependency_dag": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "held_out_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "evidence_id",
+          "content_digest",
+          "access_policy"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "pattern": "^ev:[a-f0-9]{64}$"
+          },
+          "content_digest": { "$ref": "https://jynx.dev/schemas/common/ContentDigest.schema.json" },
+          "access_policy": {
+            "type": "string",
+            "enum": ["judge_sealed_commit", "adjudicator_only"]
+          },
+          "commitment_ref": {
+            "type": "string",
+            "description": "Opaque commitment id registered with judge; not a filesystem path."
+          }
+        }
+      }
+    },
+    "arena_contract": { "$ref": "https://jynx.dev/schemas/common/LogicalRef.schema.json" },
+    "engine_contract": { "$ref": "https://jynx.dev/schemas/common/LogicalRef.schema.json" }
+  }
+}

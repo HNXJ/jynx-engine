@@ -2,3 +2,5 @@
 pytest==8.4.1
 ruff==0.12.7
 mypy==1.17.1
+jsonschema>=4.23.0
+PyYAML>=6.0.2

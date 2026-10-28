@@ -1,0 +1,60 @@
+{
+  "round_id": "round-neuro-001",
+  "tournament_id": "neuro-omission-growth",
+  "protocol_version": "0.1.0",
+  "started_at": "2026-10-28T10:00:00Z",
+  "immutable": true,
+  "pinned_components": [
+    {
+      "component_role": "rules",
+      "logical_id": "jynx.rules.growth-gate",
+      "release_version": "0.1.0",
+      "commit_sha": "0123456789abcdef0123456789abcdef01234567",
+      "content_digest": {
+        "algorithm": "sha256",
+        "hex": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      }
+    },
+    {
+      "component_role": "engine",
+      "logical_id": "jynx.engine.sim-runtime",
+      "release_version": "0.1.0",
+      "commit_sha": "abcdef0123456789abcdef0123456789abcdef01",
+      "content_digest": {
+        "algorithm": "sha256",
+        "hex": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    }
+  ],
+  "compatibility_constraints": [
+    {
+      "description": "Rules 0.1.x must pair with engine 0.1.x for omission growth.",
+      "constraint_ref": {
+        "logical_id": "jynx.rules.compat.omission-v0",
+        "version_range": "0.1.0"
+      }
+    }
+  ],
+  "evaluation_inputs": [
+    {
+      "input_id": "omission_stream_slice",
+      "content_digest": {
+        "algorithm": "sha256",
+        "hex": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      },
+      "held_out": false
+    }
+  ],
+  "environment": {
+    "environment_id": "jynx-env/neuro-omission-v0",
+    "lock_digest": {
+      "algorithm": "sha256",
+      "hex": "1111111111111111111111111111111111111111111111111111111111111111"
+    }
+  },
+  "active_objectives": ["omission_prediction_error"],
+  "helper_dependency_dag": {
+    "jynx.lab.omission-metrics": [],
+    "jynx.science.neuro-omission-target": ["jynx.lab.omission-metrics"]
+  }
+}

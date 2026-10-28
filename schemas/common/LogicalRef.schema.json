@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jynx.dev/schemas/common/LogicalRef.schema.json",
+  "title": "LogicalRef",
+  "description": "Versioned reference by logical identifier (never repo name or filesystem path).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["logical_id", "version_range"],
+  "properties": {
+    "logical_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+    },
+    "version_range": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Semver range or pinned version (e.g. ^1.0.0, 1.2.3)."
+    }
+  }
+}

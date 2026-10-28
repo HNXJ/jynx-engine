@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jynx.dev/schemas/common/ActorRef.schema.json",
+  "title": "ActorRef",
+  "description": "Persistent actor identity separate from model/runtime/provider.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["actor_id", "roles"],
+  "properties": {
+    "actor_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "proposer",
+          "challenger",
+          "replicator",
+          "adjudicator"
+        ]
+      }
+    }
+  }
+}

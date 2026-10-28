@@ -1,0 +1,25 @@
+{
+  "tournament_id": "Bad_ID",
+  "name": "",
+  "protocol_version": "0.1.0",
+  "rules_contract": {
+    "logical_id": "/absolute/path/rules",
+    "version_range": "^0.1.0"
+  },
+  "objectives": [],
+  "judges": [],
+  "science_targets": [],
+  "allowed_move_types": ["growth_n_to_n_plus_1"],
+  "plugin_registry": [],
+  "held_out_evidence": [
+    {
+      "evidence_id": "ev:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "content_digest": {
+        "algorithm": "sha256",
+        "hex": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "access_policy": "judge_sealed_commit",
+      "commitment_ref": "missing/commitment"
+    }
+  ]
+}
