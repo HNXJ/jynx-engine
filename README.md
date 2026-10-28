@@ -1,34 +1,17 @@
-# Jynx protocol (1+6 open-world scientific discovery)
+# jynx-engine
 
-Minimal overview of the **Jynx** game protocol: versioned contracts, immutable evidence, independent judges, and portable tournaments. Runtime code in this repository is unchanged by the protocol layer; see `docs/protocol/` for details.
+Execution runtime (agents, simulation) and provisional home of the jynx protocol schemas and validators.
 
-## Seven logical repositories
+| Repo | Role |
+|---|---|
+| [jynx-arena](https://github.com/HNXJ/jynx-arena) | Frontend |
+| [jynx-rules](https://github.com/HNXJ/jynx-rules) | Moves, contracts, governance |
+| [jynx-science](https://github.com/HNXJ/jynx-science) | Claims, targets |
+| [jynx-lab](https://github.com/HNXJ/jynx-lab) | Analysis, tools |
+| [jynx-judge](https://github.com/HNXJ/jynx-judge) | Validators, rubrics |
+| [jynx-world](https://github.com/HNXJ/jynx-world) | Event ledger, world state |
 
-| Role | Purpose | Current repo (proposal → future name) |
-|------|---------|----------------------------------------|
-| **ARENA** | Frontend client (API + event stream) | `gamma-arena` → **jynx-arena** (proposal) |
-| **RULES** | Legal moves, contracts, governance | `gamma-protocol` → **jynx-rules** |
-| **SCIENCE** | Claims, targets, provenance | `gamma-science` → **jynx-science** |
-| **LAB** | Analysis, tools, models | `gamma-analysis` + `gamma-tools` → **jynx-lab** |
-| **ENGINE** | Execution, agents, simulation | this repo’s runtime → **jynx-engine** (proposal) |
-| **JUDGE** | Pluggable validators & rubrics | `gamma-labyrinth` judge → **jynx-judge** |
-| **WORLD** | Event ledger & projections | world ledger → **jynx-world** (proposal) |
+- Runtime in `src/`, `config/`, `dashboard/`; protocol in `schemas/`, `src/jynx_protocol/`, `docs/protocol/`.
+- Example tournament: `tournaments/neuro-omission-growth/`.
 
-This checkout (**HNXJ/jynx-arena**) hosts a **provisional** copy of JSON Schemas and validators until they move to **jynx-rules**.
-
-## Documentation
-
-- [Architecture & moves](docs/protocol/ARCHITECTURE.md)
-- [Shared repository root layout](docs/protocol/SHARED_ROOT_LAYOUT.md)
-- [Schema authority](docs/protocol/SCHEMA_AUTHORITY.md)
-- [Held-out evidence](docs/protocol/HELD_OUT_EVIDENCE.md)
-- [Replay & reproducibility contract](docs/protocol/REPLAY_REPRODUCIBILITY.md)
-
-## Quick checks
-
-```bash
-python3 scripts/check_shared_root.py .
-PYTHONPATH=src python3 -m pytest tests/test_protocol_schemas.py tests/test_tournament_validator.py tests/test_shared_root_checker.py -q
-```
-
-Example tournament: `tournaments/neuro-omission-growth/tournament.yaml`.
+Root layout: `artifacts/ docs/ src/ schemas/ tests/ tournaments/` (`python3 scripts/check_shared_root.py .`).

@@ -28,4 +28,4 @@ Copy `scripts/check_shared_root.py` into other repos or invoke it from a shared 
 
 ## This repository
 
-`HNXJ/jynx-arena` satisfies the layout via `artifacts/`, `docs/`, `src/`, `schemas/`, `tests/`, `tournaments/`, and `README.md`. Legacy paths (for example `config/`, `dashboard/`) remain for the existing runtime and are outside the uniform-root contract.
+`HNXJ/jynx-engine` satisfies the layout via `artifacts/`, `docs/`, `src/`, `schemas/`, `tests/`, `tournaments/`, and `README.md`. Legacy paths (for example `config/`, `dashboard/`) remain for the existing runtime and are outside the uniform-root contract.
