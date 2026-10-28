@@ -23,3 +23,11 @@ local_cache/
 outputs/
 *.egg-info/
 src/*.egg-info/
+
+# deep clean
+.env
+*.token
+data/
+outputs/
+runtime_artifacts/
+scratch/
