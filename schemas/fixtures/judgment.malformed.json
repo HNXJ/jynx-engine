@@ -1,0 +1,17 @@
+{
+  "judgment_id": "",
+  "protocol_version": "0.1",
+  "judge": {
+    "logical_id": "INVALID ID",
+    "version_range": ""
+  },
+  "outcome": {
+    "kind": "MAYBE"
+  },
+  "rubric": {
+    "logical_id": "x",
+    "version": "v1"
+  },
+  "evidence_refs": [],
+  "issued_at": "2026-10-28T12:05:00Z"
+}

@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "commitments": [
+    {
+      "commitment_ref": "neuro-omission-growth/held-out/v1",
+      "evidence_id": "ev:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "content_digest": {
+        "algorithm": "sha256",
+        "hex": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "sealed": true,
+      "player_accessible": false
+    }
+  ]
+}

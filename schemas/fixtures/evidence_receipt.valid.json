@@ -1,0 +1,22 @@
+{
+  "evidence_id": "ev:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "content_digest": {
+    "algorithm": "sha256",
+    "hex": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "media_type": "application/json",
+  "byte_length": 128,
+  "provenance": {
+    "source_kind": "simulation_run",
+    "actors": [
+      {
+        "actor_id": "actor:builder-01",
+        "roles": ["proposer"]
+      }
+    ],
+    "parent_evidence_ids": [],
+    "round_id": "round-neuro-001",
+    "move_id": "move-growth-001"
+  },
+  "created_at": "2026-10-28T12:00:00Z"
+}

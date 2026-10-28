@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jynx.dev/schemas/EvidenceReceipt.schema.json",
+  "title": "EvidenceReceipt",
+  "description": "Immutable, content-addressed evidence with provenance. Authoritative schema: jynx-rules (provisional copy in jynx-arena).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "content_digest",
+    "media_type",
+    "provenance",
+    "created_at"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "description": "Content-addressed identifier; MUST equal digest-derived id for canonical receipts.",
+      "pattern": "^ev:[a-f0-9]{64}$"
+    },
+    "content_digest": {
+      "$ref": "https://jynx.dev/schemas/common/ContentDigest.schema.json"
+    },
+    "media_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "byte_length": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_kind", "actors"],
+      "properties": {
+        "source_kind": {
+          "type": "string",
+          "enum": [
+            "simulation_run",
+            "instrument_capture",
+            "derived_artifact",
+            "ledger_projection",
+            "external_dataset"
+          ]
+        },
+        "actors": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "https://jynx.dev/schemas/common/ActorRef.schema.json" }
+        },
+        "parent_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^ev:[a-f0-9]{64}$"
+          }
+        },
+        "round_id": { "type": "string", "minLength": 1 },
+        "move_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "labels": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sealed": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, payload bytes are not player-accessible; judge gate only."
+    }
+  }
+}

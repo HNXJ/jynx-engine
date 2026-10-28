@@ -1,0 +1,31 @@
+{
+  "judgment_id": "judgment-001",
+  "protocol_version": "0.1.0",
+  "judge": {
+    "logical_id": "jynx.judge.neuro-growth-rubric",
+    "version_range": "0.1.0"
+  },
+  "move_id": "move-growth-001",
+  "round_id": "round-neuro-001",
+  "outcome": {
+    "kind": "PASS",
+    "detail": "Rubric satisfied under protocol 0.1.0; not a claim of biological truth.",
+    "scoring_vector": {
+      "V": 1.0,
+      "I": 0.42,
+      "C": 0.15
+    }
+  },
+  "rubric": {
+    "logical_id": "jynx.judge.rubric.growth-n-plus-1",
+    "version": "0.1.0"
+  },
+  "evidence_refs": [
+    "ev:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  ],
+  "issued_at": "2026-10-28T12:05:00Z",
+  "adjudicator": {
+    "actor_id": "actor:judge-service",
+    "roles": ["adjudicator"]
+  }
+}

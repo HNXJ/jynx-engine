@@ -1,0 +1,13 @@
+{
+  "evidence_id": "ev:not-a-valid-digest-id",
+  "content_digest": {
+    "algorithm": "md5",
+    "hex": "deadbeef"
+  },
+  "media_type": "application/json",
+  "provenance": {
+    "source_kind": "simulation_run",
+    "actors": []
+  },
+  "created_at": "not-a-date"
+}

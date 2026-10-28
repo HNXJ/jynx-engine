@@ -1,0 +1,14 @@
+{
+  "move_id": "move-bad",
+  "move_type": "teleport",
+  "protocol_version": "0.1.0",
+  "actor": {
+    "actor_id": "actor:x",
+    "roles": ["spectator"]
+  },
+  "acceptance_criteria": {
+    "logical_id": "jynx.rules.growth-gate",
+    "version_range": "^0.1.0"
+  },
+  "submitted_at": "2026-10-28T11:55:00Z"
+}

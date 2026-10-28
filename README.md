@@ -1,32 +1,34 @@
-# Gamma Arena: Biophysical Game for LLM-Agents
+# Jynx protocol (1+6 open-world scientific discovery)
 
-## Gamma Labyrinth Role
+Minimal overview of the **Jynx** game protocol: versioned contracts, immutable evidence, independent judges, and portable tournaments. Runtime code in this repository is unchanged by the protocol layer; see `docs/protocol/` for details.
 
-## 🎯 The Mission: Continuous Growth (N → N+1)
-Gamma is a protocolized scientific discovery engine where the objective is to autonomously grow the neural substrate by exactly one biologically justified neuron at a time.
+## Seven logical repositories
 
-### Core Operating Doctrine
-1. **N → N+1**: Every expansion must be a single, justified step from current truth.
-2. **Growth Gate**: A neuron-count increase is allowed ONLY if the candidate network passes canonical Judge validation with a receipt.
-3. **Trial vs. Truth**: Trial simulations are scratch artifacts. Only Judge-validated PASS receipts can commit new truth.
-4. **Law of the Protocol**: Mission contracts are defined in `gamma-protocol`.
+| Role | Purpose | Current repo (proposal → future name) |
+|------|---------|----------------------------------------|
+| **ARENA** | Frontend client (API + event stream) | `gamma-arena` → **jynx-arena** (proposal) |
+| **RULES** | Legal moves, contracts, governance | `gamma-protocol` → **jynx-rules** |
+| **SCIENCE** | Claims, targets, provenance | `gamma-science` → **jynx-science** |
+| **LAB** | Analysis, tools, models | `gamma-analysis` + `gamma-tools` → **jynx-lab** |
+| **ENGINE** | Execution, agents, simulation | this repo’s runtime → **jynx-engine** (proposal) |
+| **JUDGE** | Pluggable validators & rubrics | `gamma-labyrinth` judge → **jynx-judge** |
+| **WORLD** | Event ledger & projections | world ledger → **jynx-world** (proposal) |
 
-## 🎭 Participants (1 Judge + 4 Players)
-* **Judge**: The final arbiter of mission success and truth promotion.
-* **Players (G01-G04)**: Flexible identities (Builder, Tuner, Analyst, Tester) performing the expansion quest.
+This checkout (**HNXJ/jynx-arena**) hosts a **provisional** copy of JSON Schemas and validators until they move to **jynx-rules**.
 
-## 🛠 Infrastructure
-* **Hub API**: Port 8001
-* **Dashboard**: Port 3012
-* **Root Path**: configured runtime workspace; see local non-secret context config
+## Documentation
 
+- [Architecture & moves](docs/protocol/ARCHITECTURE.md)
+- [Shared repository root layout](docs/protocol/SHARED_ROOT_LAYOUT.md)
+- [Schema authority](docs/protocol/SCHEMA_AUTHORITY.md)
+- [Held-out evidence](docs/protocol/HELD_OUT_EVIDENCE.md)
+- [Replay & reproducibility contract](docs/protocol/REPLAY_REPRODUCIBILITY.md)
 
-## Branch Doctrine
+## Quick checks
 
-`main` is the single active branch for all backend/control-plane state. All changes are reviewed before merge.
+```bash
+python3 scripts/check_shared_root.py .
+PYTHONPATH=src python3 -m pytest tests/test_protocol_schemas.py tests/test_tournament_validator.py tests/test_shared_root_checker.py -q
+```
 
-Promotions must be exact, reviewed, and minimal. Runtime, solver, adapter, persistence, Supabase, receipt, or truth-state changes require explicit review before merge to main.
-
-
----
-*Operational Mode: Persistent Mission (S01_BOOTSTRAP)*
+Example tournament: `tournaments/neuro-omission-growth/tournament.yaml`.

@@ -1,0 +1,124 @@
+{
+  "tournament_id": "neuro-omission-growth",
+  "name": "Neuro omission growth (N to N+1)",
+  "protocol_version": "0.1.0",
+  "rules_contract": {
+    "logical_id": "jynx.rules.growth-gate",
+    "version_range": "^0.1.0"
+  },
+  "arena_contract": {
+    "logical_id": "jynx.arena.client-api",
+    "version_range": "^0.1.0"
+  },
+  "engine_contract": {
+    "logical_id": "jynx.engine.sim-runtime",
+    "version_range": "^0.1.0"
+  },
+  "objectives": [
+    {
+      "objective_id": "omission_prediction_error",
+      "description": "Grow the network by one neuron justified by omission / prediction-error evidence.",
+      "science_target": {
+        "logical_id": "jynx.science.neuro-omission-target",
+        "version_range": "^0.1.0"
+      },
+      "primary": true
+    }
+  ],
+  "judges": [
+    {
+      "judge": {
+        "logical_id": "jynx.judge.neuro-growth-rubric",
+        "version_range": "^0.1.0"
+      },
+      "rubrics": [
+        {
+          "logical_id": "jynx.judge.rubric.growth-n-plus-1",
+          "version_range": "0.1.0"
+        }
+      ],
+      "move_types": ["growth_n_to_n_plus_1", "replication", "falsification"]
+    }
+  ],
+  "science_targets": [
+    {
+      "logical_id": "jynx.science.neuro-omission-target",
+      "version_range": "^0.1.0"
+    }
+  ],
+  "allowed_move_types": [
+    "growth_n_to_n_plus_1",
+    "prediction",
+    "falsification",
+    "replication",
+    "compression",
+    "experimental_design",
+    "uncertainty_reduction"
+  ],
+  "plugin_registry": [
+    {
+      "logical_id": "jynx.arena.client-api",
+      "kind": "arena",
+      "version_range": "^0.1.0",
+      "provides": ["jynx.arena.client-api"]
+    },
+    {
+      "logical_id": "jynx.rules.growth-gate",
+      "kind": "rules",
+      "version_range": "^0.1.0",
+      "provides": ["jynx.rules.growth-gate"]
+    },
+    {
+      "logical_id": "jynx.science.neuro-omission-target",
+      "kind": "science",
+      "version_range": "^0.1.0",
+      "provides": ["jynx.science.neuro-omission-target"],
+      "depends_on": ["jynx.lab.omission-metrics"]
+    },
+    {
+      "logical_id": "jynx.lab.omission-metrics",
+      "kind": "lab",
+      "version_range": "^0.1.0",
+      "provides": ["jynx.lab.omission-metrics"]
+    },
+    {
+      "logical_id": "jynx.judge.neuro-growth-rubric",
+      "kind": "judge",
+      "version_range": "^0.1.0",
+      "provides": [
+        "jynx.judge.neuro-growth-rubric",
+        "jynx.judge.rubric.growth-n-plus-1"
+      ],
+      "depends_on": ["jynx.rules.growth-gate"]
+    },
+    {
+      "logical_id": "jynx.engine.sim-runtime",
+      "kind": "engine",
+      "version_range": "^0.1.0",
+      "provides": ["jynx.engine.sim-runtime"]
+    },
+    {
+      "logical_id": "jynx.world.event-ledger",
+      "kind": "world",
+      "version_range": "^0.1.0",
+      "provides": ["jynx.world.event-ledger"]
+    }
+  ],
+  "helper_dependency_dag": {
+    "jynx.lab.omission-metrics": [],
+    "jynx.science.neuro-omission-target": ["jynx.lab.omission-metrics"],
+    "jynx.judge.neuro-growth-rubric": ["jynx.rules.growth-gate"],
+    "jynx.rules.growth-gate": []
+  },
+  "held_out_evidence": [
+    {
+      "evidence_id": "ev:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "content_digest": {
+        "algorithm": "sha256",
+        "hex": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "access_policy": "judge_sealed_commit",
+      "commitment_ref": "neuro-omission-growth/held-out/v1"
+    }
+  ]
+}

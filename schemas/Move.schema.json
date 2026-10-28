@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jynx.dev/schemas/Move.schema.json",
+  "title": "Move",
+  "description": "Generalized scientific move with role and acceptance criteria reference.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "move_id",
+    "move_type",
+    "protocol_version",
+    "actor",
+    "acceptance_criteria",
+    "submitted_at"
+  ],
+  "properties": {
+    "move_id": { "type": "string", "minLength": 1 },
+    "move_type": {
+      "type": "string",
+      "enum": [
+        "growth_n_to_n_plus_1",
+        "prediction",
+        "falsification",
+        "replication",
+        "compression",
+        "experimental_design",
+        "uncertainty_reduction"
+      ]
+    },
+    "protocol_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "round_id": { "type": "string" },
+    "tournament_id": { "type": "string" },
+    "actor": { "$ref": "https://jynx.dev/schemas/common/ActorRef.schema.json" },
+    "payload_digest": { "$ref": "https://jynx.dev/schemas/common/ContentDigest.schema.json" },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^ev:[a-f0-9]{64}$"
+      }
+    },
+    "acceptance_criteria": { "$ref": "https://jynx.dev/schemas/common/LogicalRef.schema.json" },
+    "target_judges": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "https://jynx.dev/schemas/common/LogicalRef.schema.json" }
+    },
+    "submitted_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
