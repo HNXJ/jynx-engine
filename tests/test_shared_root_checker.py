@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = ROOT / "scripts" / "check_shared_root.py"
+SCRIPT = ROOT / "src" / "scripts" / "check_shared_root.py"
 
 
 def test_shared_root_passes_on_repo_root():
