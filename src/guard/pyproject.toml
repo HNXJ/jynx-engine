@@ -3,6 +3,7 @@ name = "guard"
 version = "0.1.0"
 description = "A defensive agent harness for local markdown-driven CLI agents."
 authors = [{ name = "Hamed Nejat" }]
+license = { text = "MIT" }
 dependencies = [
     "openai",
     "python-dotenv",
